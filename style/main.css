@@ -1,12 +1,201 @@
-*
-{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f6f8;
 }
+
+/* Header */
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 32px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: 48px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  gap: 26px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background: #2563eb;
+  transition: 0.3s;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* Search */
+.search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.search input {
+  border: none;
+  padding: 8px 12px;
+  outline: none;
+  width: 400px;
+  font-size: 0.95rem;
+}
+
+.search button {
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.search button:hover {
+  background: #1e4ed8;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Cart */
+.cart {
+  position: relative;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* 📱 Mobile / Tablet */
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: auto auto 1fr auto;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Navigation */
+  .nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    flex-direction: column;
+    border-top: 1px solid #e5e7eb;
+    z-index: 1000;
+  }
+
+  .nav a {
+    padding: 14px 24px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .nav.show {
+    display: flex;
+  }
+
+  /* Search Bar */
+  .search {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .search input {
+    flex: 1;               /* input takes full width */
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .search button {
+    padding: 10px 16px;     /* bigger button for mobile */
+    background: #2563eb;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+
+  .search button:hover {
+    background: #1e4ed8;
+  }
+
+  /* Hamburger visible */
+  .hamburger {
+    display: block;
+  }
+
+  /* Cart aligned to right */
+  .actions {
+    gap: 12px;
+  }
+}
+

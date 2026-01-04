@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce FrontEnd</title>
-    <link rel="stylesheet" href="style/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Navbar</title>
+  <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our Online Store</h1>
-    </header>
-    <script src="script/app.js"></script>
+
+<header class="header">
+  <!-- Logo -->
+  <div class="logo">
+    <img src="asset/logo.png" alt="Company Logo">
+    <span>Comfort Desk</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">Services</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- Search -->
+  <div class="search">
+    <input type="text" placeholder="Search">
+    <button type="button">Search</button>
+  </div>
+
+  <!-- Cart + Hamburger -->
+  <div class="actions">
+    <div class="cart">
+      🛒 <span class="badge">2</span>
+    </div>
+    <div class="hamburger" id="hamburger">☰</div>
+  </div>
+</header>
+
+<script src="script/app.js"></script>
 </body>
 </html>
