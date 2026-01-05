@@ -1,7 +1,5 @@
 
-export const App=()=>{
-    console.log("E-Commerce Website Loaded");
-}
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
