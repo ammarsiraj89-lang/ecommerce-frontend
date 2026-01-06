@@ -1,3 +1,4 @@
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -9,11 +10,11 @@ body {
   background: #f4f6f8;
 }
 
-/* Header */
+/* ===== HEADER / NAVBAR ===== */
 .header {
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 1000;
   display: grid;
   grid-template-columns: auto 1fr auto auto;
   align-items: center;
@@ -24,14 +25,6 @@ body {
 }
 
 /* Logo */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-
 .logo img {
   width: 44px;
 }
@@ -78,19 +71,16 @@ body {
   align-items: center;
 }
 
-.cart {
-  font-size: 1.4rem;
-  cursor: pointer;
-}
-
+/* Hamburger */
 .hamburger {
   display: none;
   font-size: 1.6rem;
   cursor: pointer;
 }
 
-/* ===== MOBILE VIEW ===== */
+/* ===== MOBILE NAVBAR ===== */
 @media (max-width: 768px) {
+
   .header {
     grid-template-columns: auto auto auto;
   }
@@ -98,7 +88,7 @@ body {
   .nav {
     display: none;
     position: absolute;
-    top: 70px;
+    top: 100%;
     left: 0;
     width: 100%;
     background: #fff;
@@ -111,15 +101,11 @@ body {
     border-bottom: 1px solid #e5e7eb;
   }
 
-  .nav.show {
-    display: flex;
+  .search {
+    width: 110px;
   }
 
-  .search {
-   width: 100px;
-   border: 1px solid #d1d5db;
-  }
-  .search button{
+  .search button {
     display: none;
   }
 
@@ -128,15 +114,69 @@ body {
   }
 }
 
-/* Carousel */
-.carousel-inner img {
+/* ===== DESKTOP CAROUSEL (FLIPCARD STYLE) ===== */
+/* ===== DESKTOP CAROUSEL ===== */
+.desktop-carousel {
+  display: block;
   width: 100%;
   height: 500px;
-  object-fit: cover;
+  background: #fff;
 }
 
-@media (max-width: 768px) {
-  .carousel-inner img {
-    height: 300px;
+/* Desktop Carousel Images */
+.carousel-img {
+  width: 100%;          /* full container width */
+  height: 300px;        /* same height for all slides */
+  object-fit: cover;    /* cover the box without stretching */
+  object-position: center;
+  border-radius: 8px;   /* optional: rounded corners like flipcard */
+}
+
+/* Carousel Captions */
+.carousel-caption h5 {
+  color: #FFD700;           /* bright gold for heading */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);  /* shadow for readability */
+  font-weight: bold;
+}
+
+.carousel-caption p {
+  color: #ffffff;           /* white for paragraph */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);  /* subtle shadow */
+}
+
+/* Optional: semi-transparent overlay behind captions */
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.3);  /* dark overlay */
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+
+/* ===== MOBILE CAROUSEL ===== */
+.mobile-carousel {
+  display: none;
+}
+
+/* ===== MOBILE VIEW ===== */
+@media (max-width: 767.98px) {
+
+  /* Hide desktop on mobile */
+  .desktop-carousel {
+    display: none;
+  }
+
+  /* Show mobile on mobile */
+  .mobile-carousel {
+    display: block;
+    width: 100%;
+    background: #fff;
+    margin-top: 10px;
+  }
+
+  .mobile-carousel img {
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    object-position: center;
   }
 }
