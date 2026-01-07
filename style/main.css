@@ -88,24 +88,49 @@ body {
   border-radius: 6px;
 }
 
+
+
+
+
+/* Actions container */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* space between cart group and hamburger */
+}
+
+/* Group of cart/notification icons */
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* space between cart & notification icons */
+}
+
+/* Cart icons */
 .cart-icon {
   width: 30px;
   height: 30px;
   text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-
-/* Actions */
-.actions {
-  display: flex;
-  gap: 16px;
-  align-items: center;
+.cart-icon:hover {
+  transform: scale(1.1);
 }
 
 /* Hamburger */
 .hamburger {
-  display: none;
+  display: none; /* keep hidden on desktop, show on mobile later */
+  cursor: pointer;
+  font-size: 24px;
+  transition: transform 0.2s ease;
 }
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
 
 
 
@@ -140,7 +165,10 @@ body {
     border-bottom: 1px solid #e5e7eb;
   }
 
-  
+  .logo img {
+    width: 40px;
+    margin-left: 20px;
+  }
   .search {
     width: 200px;
     position: relative;
