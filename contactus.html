@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style/main.css">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .flip-container {
+            perspective: 1000px;
+        }
+
+        .flip-card {
+            position: relative;
+            width: 100%;
+            height: 420px;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease;
+        }
+
+        .flip-container:hover .flip-card {
+            transform: rotateY(180deg);
+        }
+
+        .flip-front,
+        .flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+        }
+
+        .flip-front {
+            background: #ffffff;
+        }
+
+        .flip-back {
+            background: #ffffff;
+            transform: rotateY(180deg);
+        }
+
+        .icon-box {
+            width: 55px;
+            height: 55px;
+            background: rgba(13,110,253,.1);
+            color: #0d6efd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+        /* Background enhancement */
+body {
+    background: radial-gradient(circle at top, #eef2ff, #f8f9fa);
+}
+
+/* Flip container depth */
+.flip-container {
+    perspective: 1200px;
+}
+
+/* Card base */
+.flip-card {
+    background: transparent;
+    transition: transform 0.9s cubic-bezier(.4,.2,.2,1),
+                box-shadow 0.3s ease;
+}
+
+/* Glassmorphism card face */
+.flip-front,
+.flip-back {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Gradient border effect */
+.flip-front::before,
+.flip-back::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+/* Elevated hover glow */
+.flip-container:hover .flip-card {
+    box-shadow: 0 25px 60px rgba(13,110,253,.25);
+}
+
+/* Icon refinement */
+.icon-box {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(13,110,253,.35);
+}
+
+/* Typography polish */
+.flip-front h5,
+.flip-back h5 {
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.flip-front p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Button style enhancement */
+.flip-back .btn {
+    background: linear-gradient(135deg, #0d6efd, #6610f2);
+    border: none;
+}
+
+.flip-back .btn:hover {
+    opacity: 0.95;
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <!-- Logo -->
+        <div class="logo">
+          <img src="asset/logo.png" alt="Company Logo">
+          <span>Comfort Desk</span>
+        </div>
+      
+        <!-- Navigation -->
+        <nav class="nav" id="nav">
+          <a href="index.html">Home</a>
+          <a href="#">Products</a>
+          <a href="service.html">Services</a>
+          <a href="contactus.html">Contact</a>
+        </nav>
+      
+        <!-- Search -->
+        <div class="search">
+          <input type="text" placeholder="Search">
+          <button type="button">Search</button>
+        </div>
+      
+        <!-- Actions -->
+        <div class="actions">
+          <div class="cart md-4">
+            <a href="#"><img src="asset/shopping-cart.png" alt="" class="cart-icon"></a>
+            <a href="#"><img src="asset/notification.png" alt="" class="cart-icon"></a>
+          </div>
+          <div class="hamburger" id="hamburger">☰</div>
+        </div>
+      </header>
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Contact Support</h2>
+            <p class="text-muted">Hover over a card to send us a message</p>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Flip Card -->
+            <div class="col-md-4">
+                <div class="flip-container">
+                    <div class="flip-card shadow-sm">
+
+                        <!-- Front -->
+                        <div class="flip-front d-flex flex-column align-items-center justify-content-center p-4">
+                            <div class="icon-box">📦</div>
+                            <h5>Order Support</h5>
+                            <p class="text-muted text-center">
+                                Questions about order status or delivery
+                            </p>
+                        </div>
+
+                        <!-- Back -->
+                        <div class="flip-back p-4">
+                            <h5 class="mb-3">Order Support</h5>
+                            <form>
+                                <input type="text" class="form-control mb-2" placeholder="Order ID">
+                                <input type="email" class="form-control mb-2" placeholder="Email" required>
+                                <textarea class="form-control mb-2" rows="3" placeholder="Message" required></textarea>
+                                <button class="btn btn-primary w-100">Send</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flip Card -->
+            <div class="col-md-4">
+                <div class="flip-container">
+                    <div class="flip-card shadow-sm">
+
+                        <div class="flip-front d-flex flex-column align-items-center justify-content-center p-4">
+                            <div class="icon-box">🔄</div>
+                            <h5>Returns</h5>
+                            <p class="text-muted text-center">
+                                Return & refund related queries
+                            </p>
+                        </div>
+
+                        <div class="flip-back p-4">
+                            <h5 class="mb-3">Returns</h5>
+                            <form>
+                                <input type="email" class="form-control mb-2" placeholder="Email" required>
+                                <textarea class="form-control mb-2" rows="3" placeholder="Message" required></textarea>
+                                <button class="btn btn-primary w-100">Send</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flip Card -->
+            <div class="col-md-4">
+                <div class="flip-container">
+                    <div class="flip-card shadow-sm">
+
+                        <div class="flip-front d-flex flex-column align-items-center justify-content-center p-4">
+                            <div class="icon-box">💬</div>
+                            <h5>General Inquiry</h5>
+                            <p class="text-muted text-center">
+                                Product & account questions
+                            </p>
+                        </div>
+
+                        <div class="flip-back p-4">
+                            <h5 class="mb-3">General Inquiry</h5>
+                            <form>
+                                <input type="text" class="form-control mb-2" placeholder="Full Name">
+                                <input type="email" class="form-control mb-2" placeholder="Email" required>
+                                <textarea class="form-control mb-2" rows="3" placeholder="Message" required></textarea>
+                                <button class="btn btn-primary w-100">Send</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

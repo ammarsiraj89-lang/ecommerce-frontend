@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Flip Card Cart</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="script/app.js">
+
+  <style>
+    /* Background gradient for page */
+body.bg-gradient {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  min-height: 100vh;
+}
+
+/* Flip card container */
+.flip-card {
+  perspective: 1200px;
+  cursor: pointer;
+}
+
+/* Inner card */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease-in-out;
+  transform-style: preserve-3d;
+  border-radius: 15px;
+}
+
+/* Flip on hover */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back card styles */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+/* Front Card */
+.flip-card-front {
+  background: #ffffff;
+  color: #333;
+}
+
+.flip-card-front img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.flip-card-front img:hover {
+  transform: scale(1.1);
+}
+
+.flip-card-front .price {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #2575fc;
+}
+
+/* Back Card */
+.flip-card-back {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  color: #fff;
+  transform: rotateY(180deg);
+}
+
+.flip-card-back .card-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.flip-card-back p {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* Gradient Button */
+.btn-gradient {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+  </style>
+</head>
+<body class="bg-gradient">
+
+<div class="container py-5">
+  <h1 class="mb-5 text-center text-white">Your Shopping Cart</h1>
+  
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <!-- Card 1 -->
+    <div class="col">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="https://via.placeholder.com/150" alt="Product 1">
+            <h5 class="card-title">Wireless Headphones</h5>
+            <p class="price">$120.00</p>
+          </div>
+          <div class="flip-card-back">
+            <h5 class="card-title">Details</h5>
+            <p>Quantity: 2</p>
+            <p>Total: $240.00</p>
+            <button class="btn btn-gradient remove-btn">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="https://via.placeholder.com/150" alt="Product 2">
+            <h5 class="card-title">Smart Watch</h5>
+            <p class="price">$80.00</p>
+          </div>
+          <div class="flip-card-back">
+            <h5 class="card-title">Details</h5>
+            <p>Quantity: 1</p>
+            <p>Total: $80.00</p>
+            <button class="btn btn-gradient remove-btn">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="https://via.placeholder.com/150" alt="Product 3">
+            <h5 class="card-title">Gaming Mouse</h5>
+            <p class="price">$60.00</p>
+          </div>
+          <div class="flip-card-back">
+            <h5 class="card-title">Details</h5>
+            <p>Quantity: 3</p>
+            <p>Total: $180.00</p>
+            <button class="btn btn-gradient remove-btn">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const removeButtons = document.querySelectorAll('.remove-btn');
+  removeButtons.forEach(btn => {
+    btn.addEventListener('click', e => {
+      const cardCol = e.target.closest('.col');
+      cardCol.remove();
+    });
+  });
+</script>
+
+</body>
+</html>

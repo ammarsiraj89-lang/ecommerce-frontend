@@ -41,22 +41,46 @@ async function loadProducts() {
       const data = doc.data();
 
       const productCard = `
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <div class="card h-100 shadow-sm">
-            <img src="${data.Product_Image}" class="card-img-top" alt="${data.Product_Name}">
-            <div class="card-body text-center">
-              <h5 class="card-title">${data.Product_Name}</h5>
-              <p class="text-muted">${data.Category}</p>
-              <p class="fw-bold">₹${data.Price}</p>
-              <p class="small">Available: ${data.Quantity}</p>
-              <button class="btn btn-primary w-100">Add to Cart</button>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="card h-100 shadow-sm">
+          <img src="${data.Product_Image}" class="card-img-top" alt="${data.Product_Name}">
+    
+          <div class="card-body text-center">
+            <h5 class="card-title">${data.Product_Name}</h5>
+            <p class="text-muted">${data.Category}</p>
+            <p class="fw-bold">₹${data.Price}</p>
+            <p class="small">Available: ${data.Quantity}</p>
+    
+            <!-- Buttons Row -->
+            <div class="d-flex gap-2">
+              <!-- Add to Cart -->
+              <button class="btn btn-primary flex-grow-1">
+                Add to Cart
+              </button>
+    
+              <!-- Wishlist Icon Button -->
+              <button class="btn btn-outline-danger wishlist-btn">
+                <i class="fa-regular fa-heart"></i>
+              </button>
             </div>
+    
           </div>
         </div>
-      `;
+      </div>
+    `;
+    
 
       productsContainer.insertAdjacentHTML("beforeend", productCard);
     });
+
+    document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".wishlist-btn");
+  if (btn) {
+    const icon = btn.querySelector("i");
+    icon.classList.toggle("fa-regular");
+    icon.classList.toggle("fa-solid");
+  }
+});
 
   } catch (error) {
     console.error("Error fetching products:", error);
