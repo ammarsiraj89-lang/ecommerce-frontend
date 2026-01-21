@@ -147,18 +147,22 @@ body {
 
   .nav {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #fff;
     flex-direction: column;
-    border-top: 1px solid #e5e7eb;
+    background-color: #fff;
+    position: absolute;
+    top: 60px;  /* adjust to header height */
+    right: 0;
+    width: 200px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    transition: all 0.3s ease;
   }
-
-  .nav.show {
+  .nav.active {
     display: flex;
   }
+
+
 
   .nav a {
     padding: 10px 20px;
@@ -187,8 +191,8 @@ body {
   }
 
   .hamburger {
-    width: 20px;
     display: block;
+    cursor: pointer;
   }
 }
 
@@ -341,6 +345,106 @@ body {
   transform: scale(0.96);
 }
 
+/* PRODUCTS SECTION */
+
+#products {
+  width: 95%;
+  margin: 0 auto; /* center horizontally */
+}
+
+
+/* Card base */
+.card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Shadow + lift */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Image wrapper */
+.card-img-top {
+  height: 200px;
+  width: 95%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Zoom image on hover */
+.card:hover .card-img-top {
+  transform: scale(1.08);
+}
+
+/* Card body */
+.card-body {
+  padding: 18px;
+  background: #fff;
+}
+
+/* Product title */
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 6px;
+  height: 42px;
+  overflow: hidden;
+}
+
+/* Price */
+.card-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0d6efd;
+  margin: 0;
+}
+
+/* Smooth grid animation */
+.col-lg-3,
+.col-md-4,
+.col-sm-6 {
+  transition: transform 0.3s ease;
+}
+
+.card {
+  padding: 0 !important;
+}
+
+.card-img-top {
+  width: 100% !important;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.card img {
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Mobile spacing */
+@media (max-width: 576px) {
+  .card-img-top {
+    height: 180px;
+  }
+}
+
+/* Loading & empty text */
+#products p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
 
 /* ===== MOBILE VIEW ===== */
 @media (max-width: 767.98px) {
@@ -382,5 +486,48 @@ body {
   .carousel-caption {
     font-size: 14px;
     padding: 8px 16px;
+  }
+}
+@media (max-width: 576px) {
+
+  /* Force 2 cards per row */
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  #products {
+    padding: 0 6px;
+  }
+
+  .card {
+    margin-bottom: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  /* Image style like Flipkart */
+  .card-img-top,
+  .card img {
+    height: 170px;
+    object-fit: cover;
+    background: #fff;
+  }
+
+  .card-body {
+    padding: 8px;
+  }
+
+  .card-title {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    height: 34px; /* 2 lines */
+    overflow: hidden;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #388e3c;
   }
 }
