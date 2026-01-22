@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Notifications</title>
+  <link rel="stylesheet" href="style/notification.css" />
+  <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+
+     <header class="header">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="asset/logo.png" alt="Company Logo">
+      <span>Comfort Desk</span>
+    </div>
+  
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+      <a href="index.html">Home</a>
+      <a href="#">Products</a>
+      <a href="service.html">Services</a>
+      <a href="contactus.html">Contact</a>
+    </nav>
+  
+    <!-- Search -->
+    <div class="search">
+      <input type="text" placeholder="Search">
+      <button type="button">Search</button>
+    </div>
+  
+    <!-- Actions -->
+    <div class="actions">
+      <div class="cart md-4">
+        <a href="#"><img src="asset/shopping-cart.png" alt="" class="cart-icon"></a>
+        <a href="notification.html"><img src="asset/notification.png" alt="" class="cart-icon"></a>
+      </div>
+      <div class="hamburger" id="hamburger">☰</div>
+    </div>
+  </header>
+  <div class="notification-container">
+    <div class="header">
+      <h2>Notifications</h2>
+      <button id="markAllBtn">Mark all as read</button>
+    </div>
+
+    <ul id="notificationList" class="notification-list">
+      <!-- Notifications injected by JS -->
+    </ul>
+  </div>
+
+  <script src="script/notification.js"></script>
+</body>
+</html>
