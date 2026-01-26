@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FakeStoreAI</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #ff6f61 !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: #555 !important;
+      font-weight: 500;
+      margin-right: 10px;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ff6f61 !important;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #ff6f61, #ff9472);
+      color: #fff;
+      padding: 60px 0;
+      text-align: center;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+    }
+
+    .card {
+      border: none;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-img-top {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      height: 200px;
+      object-fit: contain;
+      padding: 15px;
+      background-color: #fff;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .price {
+      font-weight: 700;
+      color: #ff6f61;
+      font-size: 1.2rem;
+    }
+
+    .btn-buy {
+      background-color: #ff6f61;
+      color: #fff;
+      border-radius: 50px;
+      padding: 5px 20px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-buy:hover {
+      background-color: #ff9472;
+      color: #fff;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">FakeStoreAI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero container">
+    <h1>Welcome to FakeStoreAI</h1>
+    <p>Discover amazing products with AI-powered recommendations</p>
+  </section>
+
+  <!-- Product Grid -->
+  <div class="container">
+    <div class="row g-4" id="product-grid">
+      <!-- Products will be injected here -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 FakeStoreAI. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS to fetch products -->
+  <script>
+    const productGrid = document.getElementById('product-grid');
+
+    async function fetchProducts() {
+      try {
+        const res = await fetch('https://fakestoreapi.com/products');
+        const products = await res.json();
+
+        products.forEach(product => {
+          const productCard = `
+            <div class="col-md-3 col-sm-6">
+              <div class="card">
+                <img src="${product.image}" class="card-img-top" alt="${product.title}">
+                <div class="card-body text-center">
+                  <h5 class="card-title">${product.title}</h5>
+                  <p class="card-text">${product.description.substring(0, 60)}...</p>
+                  <p class="price">$${product.price}</p>
+                  <a href="#" class="btn btn-buy">Buy Now</a>
+                </div>
+              </div>
+            </div>
+          `;
+          productGrid.innerHTML += productCard;
+        });
+      } catch (error) {
+        productGrid.innerHTML = '<p class="text-center text-danger">Failed to load products.</p>';
+        console.error(error);
+      }
+    }
+
+    fetchProducts();
+  </script>
+</body>
+</html>
