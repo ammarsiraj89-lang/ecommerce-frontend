@@ -3,183 +3,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Comfort Desk - Home</title>
+  <title>Comfort Desk | Premium Ergonomics</title>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="script/firebase-app.js"></script>
-
-  
   <link rel="stylesheet" href="style/main.css">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="logo">
-      <img src="asset/logo.png" alt="Logo">
-      <span>Comfort Desk</span>
-    </div>
+  <header class="main-header">
+    <div class="header-container">
+      <div class="logo">
+        <img src="asset/logo.png" alt="Logo">
+        <span>Comfort<span class="text-primary-emphasis">Desk</span></span>
+      </div>
 
-    <nav class="nav" id="nav">
-      <a href="login.html">Home</a>
-      <a href="index.html">Products</a>
-      <a href="service.html">Services</a>
-      <a href="contactus.html">Contact</a>
-    </nav>
+      <nav class="nav-menu" id="nav">
+        <a href="login.html">Home</a>
+        <a href="index.html" class="active">Products</a>
+        <a href="service.html">Services</a>
+        <a href="contactus.html">Contact</a>
+      </nav>
 
-    <div class="search">
-      <input type="text" placeholder="Search">
-      <button>Search</button>
-    </div>
+      <div class="header-right">
+        <div class="search-bar">
+          <input type="text" placeholder="Search ergonomics...">
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
 
-    <div class="actions">
-      <a href="#"><img src="asset/shopping-cart.png" class="cart-icon"></a>
-      <a href="notification.html"><img src="asset/notification.png" class="cart-icon"></a>
-      <div class="hamburger" id="hamburger">☰</div>
+        <div class="action-icons">
+          <a href="dashboard.html" class="icon-link">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="badge">3</span>
+          </a>
+          <a href="notification.html" class="icon-link">
+            <i class="fa-solid fa-bell"></i>
+            <span class="badge">5</span>
+          </a>
+          <button class="hamburger" id="hamburger">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- CAROUSEL -->
-  <div id="desktopCarousel" class="carousel slide carousel-fade d-none d-md-block" data-bs-ride="carousel">
-  
-    <div class="carousel-inner">
-  
-      <div class="carousel-item active">
-        <img src="asset/Gemini_Generated_Image_nwj92fnwj92fnwj9.png" class="d-block w-100">
-        <div class="carousel-caption text-dark">
-          <h5>Grab Exclusive Deals!</h5>
-          <p>Shop your favorites at unbeatable prices.</p>
-          <a href="#" class="btn btn-primary">Buy Now</a>
+  <section class="hero-section">
+    <div id="desktopCarousel" class="carousel slide carousel-fade d-none d-md-block" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="hero-overlay"></div>
+          <img src="asset/Gemini_Generated_Image_nwj92fnwj92fnwj9.png" class="d-block w-100 hero-img">
+          <div class="carousel-caption">
+            <h1 class="display-4 fw-bold">Elevate Your Workspace</h1>
+            <p class="lead">Discover the ultimate blend of comfort and productivity.</p>
+            <a href="#" class="btn btn-primary btn-lg px-5">Shop Now</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="hero-overlay"></div>
+          <img src="asset/chair.webp" class="d-block w-100 hero-img">
+          <div class="carousel-caption">
+            <h1 class="display-4 fw-bold">Ergonomic Excellence</h1>
+            <p class="lead">Designed for long hours, built for a lifetime.</p>
+          </div>
         </div>
       </div>
-  
-      <div class="carousel-item">
-        <img src="asset/chair.webp" class="d-block w-100">
-        <div class="carousel-caption text-dark">
-          <h5>New Arrivals!</h5>
-          <p>Latest ergonomic comfort products.</p>
-        </div>
-      </div>
-  
-      <div class="carousel-item">
-        <img src="asset/unnamed.jpg" class="d-block w-100">
-        <div class="carousel-caption text-dark">
-          <h5>Why Choose Us?</h5>
-          <p>Premium quality & best price guaranteed.</p>
-        </div>
-      </div>
-  
+      <button class="carousel-control-prev" type="button" data-bs-target="#desktopCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#desktopCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
     </div>
-  
-    <!-- Fixed Buttons (Correct ID linking) -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#desktopCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-  
-    <button class="carousel-control-next" type="button" data-bs-target="#desktopCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  
-  </div>
 
-  <!--mobile-->
-  <div id="mobileCarouselFade"
-  class="carousel slide carousel-fade mobile-carousel d-block d-md-none"
-  data-bs-ride="carousel">
-  
-    <div class="carousel-inner">
-  
-      <!-- Slide 1 -->
-      <div class="carousel-item active">
-        <img src="asset/offer.webp" alt="Mobile Offer">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First Slide Label (Mobile)</h5>
-          <p>Some placeholder content for mobile first slide.</p>
+  </section>
+  <section>
+    <div id="mobileCarouselFade" class="carousel slide d-block d-md-none" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="asset/offer.webp" class="w-100 mobile-hero-img" alt="Offer">
+        </div>
+        <div class="carousel-item">
+          <img src="asset/new product.webp" class="w-100 mobile-hero-img" alt="New">
         </div>
       </div>
-  
-      <!-- Slide 2 -->
-      <div class="carousel-item">
-        <img src="asset/new product.webp" alt="Mobile New Product">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second Slide Label (Mobile)</h5>
-          <p>Some placeholder content for mobile second slide.</p>
-        </div>
-      </div>
-  
-      <!-- Slide 3 -->
-      <div class="carousel-item">
-        <img src="asset/1600w-gK9MMCf-Gjo.jpg" alt="Mobile New">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third Slide Label (Mobile)</h5>
-          <p>Some placeholder content for mobile third slide.</p>
-        </div>
-      </div>
-  
+      <button class="carousel-control-prev" type="button" data-bs-target="#mobileCarouselFade" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon"></span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#mobileCarouselFade" data-bs-slide="next">
+  <span class="carousel-control-next-icon"></span>
+</button>
     </div>
-  
-    <!-- Correct Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#mobileCarouselFade" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-  
-    <button class="carousel-control-next" type="button" data-bs-target="#mobileCarouselFade" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  
-  </div>
-
-  <!-- PRODUCT LIST -->
-  <section class="container my-5">
-    <h2 class="text-center mb-4">Our Products</h2>
-    <div id="products" class="row g-4"></div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-dark text-white pt-5 pb-3">
-    <div class="container">
-      <div class="row">
-
-        <div class="col-md-4">
-          <h5>Contact Us</h5>
-          <p>🏢 123 Main Street, City</p>
-          <p>📞 +1 234 567 890</p>
-          <p>✉️ info@example.com</p>
+  <section class="products-section container py-5">
+    <div class="section-header text-center mb-5">
+      <h2 class="fw-bold">Our Signature Collection</h2>
+      <div class="underline mx-auto"></div>
+    </div>
+    <div id="products" class="row g-4">
         </div>
+  </section>
 
-        <div class="col-md-4">
-          <h5>Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><a href="index.html" class="text-white">Home</a></li>
-            <li><a href="#" class="text-white">Products</a></li>
-            <li><a href="service.html" class="text-white">Services</a></li>
-            <li><a href="contactus.html" class="text-white">Contact</a></li>
-          </ul>
+  <footer class="main-footer">
+  <div class="container">
+    <div class="row gy-4">
+      
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-brand mb-3">
+          <img src="asset/logo.png" alt="Comfort Desk Logo" class="footer-logo">
+          <span class="brand-text">Comfort<span class="text-primary">Desk</span></span>
         </div>
-
-        <div class="col-md-4">
-          <h5>Follow Us</h5>
-          <a href="#" class="text-white fs-4 me-3"><i class="fab fa-facebook"></i></a>
-          <a href="#" class="text-white fs-4 me-3"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="text-white fs-4 me-3"><i class="fab fa-instagram"></i></a>
+        <p class="footer-description">
+          Redefining workspace comfort with premium ergonomic solutions designed for health and productivity.
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
 
-      <hr>
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-heading">Quick Links</h5>
+        <ul class="footer-links list-unstyled">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">Products</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="contactus.html">Contact Us</a></li>
+        </ul>
+      </div>
 
-      <div class="text-center">&copy; 2026 Comfort Desk</div>
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-heading">Contact Us</h5>
+        <ul class="footer-contact list-unstyled">
+          <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, City</li>
+          <li><i class="fas fa-phone-alt"></i> +1 234 567 890</li>
+          <li><i class="fas fa-envelope"></i> info@example.com</li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <h5 class="footer-heading">Newsletter</h5>
+        <p class="footer-description">Subscribe to get the latest ergonomic tips and exclusive offers.</p>
+        <form class="newsletter-form">
+          <div class="input-group">
+            <input type="email" class="form-control border-0" placeholder="Your Email">
+            <button class="btn btn-primary" type="button">Join</button>
+          </div>
+        </form>
+      </div>
+
     </div>
-  </footer>
 
-  <!-- SCRIPTS -->
+    <hr class="footer-divider">
+    <div class="footer-bottom text-center">
+      <p class="mb-0">&copy; 2026 Comfort Desk. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
   <script type="module" src="script/app.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
