@@ -20,7 +20,9 @@ const db = getFirestore(app);
 // UI container
 const productsContainer = document.getElementById("products");
 
-// Load products from Firestore
+/* =======================
+   LOAD PRODUCTS
+======================= */
 async function loadProducts() {
   productsContainer.innerHTML = "<p class='text-center'>Loading...</p>";
 
@@ -38,18 +40,16 @@ async function loadProducts() {
 
     const card = `
       <div class="col-lg-3 col-md-4 col-sm-6">
-        <div class="card h-100 shadow-sm product-card" data-id="${doc.id}">
+<div class="product-card card h-100 shadow-sm" data-id="${doc.id}">
           <img src="${p.Product_Image}" class="card-img-top" alt="${p.Product_Name}">
           <div class="card-body text-center">
-            <h5 class="card-title">${p.Product_Name}</h5>
-            <p class="text-muted">${p.Category}</p>
-            <p class="fw-bold">₹${p.Price}</p>
-            <p class="small">Available: ${p.Quantity}</p>
+            <p class="text-muted small">${p.Category}</p>
+            <h6 class="fw-bold">${p.Product_Name}</h6>
+            <p class="fw-bold text-primary">₹${p.Price}</p>
 
-            <div class="d-flex gap-2">
-              <button class="btn btn-primary flex-grow-1">Add to Cart</button>
-
-              <button class="btn btn-outline-danger wishlist-btn">
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-sm btn-outline-primary rounded-pill px-3 add-to-cart-btn">Add +</button>
+              <button class="btn btn-sm btn-outline-danger wishlist-btn">
                 <i class="fa-regular fa-heart"></i>
               </button>
             </div>
@@ -64,57 +64,108 @@ async function loadProducts() {
 
 loadProducts();
 
-
-// PRODUCT CLICK → REDIRECT
+/* =======================
+   PRODUCT CARD CLICK
+======================= */
 productsContainer.addEventListener("click", (e) => {
+  // Block buttons from triggering navigation
+  if (
+    e.target.closest(".add-to-cart-btn") ||
+    e.target.closest(".wishlist-btn")
+  ) return;
+
   const card = e.target.closest(".product-card");
   if (!card) return;
 
-  const id = card.dataset.id;
-  window.location.href = `products.html?id=${id}`;
+  window.location.href = `products.html?id=${card.dataset.id}`;
 });
 
 
-// WISHLIST BUTTON
+/* =======================
+   ADD TO CART (MULTIPLE ITEMS FIXED)
+======================= */
+/* =======================
+   ADD TO CART (FIXED)
+======================= */
+document.addEventListener("click", (e) => {
+  // 1. Identify if the clicked element is the Add to Cart button
+  const btn = e.target.closest(".add-to-cart-btn");
+  if (!btn) return;
+
+  // 2. Prevent the card's general click (navigation) from firing
+  e.preventDefault();
+  e.stopImmediatePropagation(); 
+
+  const card = btn.closest(".product-card");
+  if (!card) return;
+
+  // 3. Extract Data
+  const id = card.dataset.id;
+  const name = card.querySelector("h6").innerText;
+  // Use a regex to get only numbers/decimals for the price
+  const priceText = card.querySelector(".text-primary").innerText;
+  const price = parseFloat(priceText.replace(/[^0-9.]/g, ""));
+  const image = card.querySelector("img").src;
+
+  // 4. Save to LocalStorage
+  addToCart({ id, name, price, image });
+
+  // 5. UI feedback
+  const originalText = btn.innerHTML;
+  btn.innerText = "Added ✓";
+  btn.classList.replace("btn-outline-primary", "btn-success");
+
+  setTimeout(() => {
+    btn.innerHTML = originalText;
+    btn.classList.replace("btn-success", "btn-outline-primary");
+  }, 1000);
+});
+
+
+function addToCart(product) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const existing = cart.find((item) => item.id === product.id);
+
+  if (existing) {
+    existing.qty += 1; // ✅ quantity increases
+  } else {
+    product.qty = 1;
+    cart.push(product);
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+/* =======================
+   WISHLIST
+======================= */
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".wishlist-btn");
-  if (btn) {
-    const icon = btn.querySelector("i");
-    icon.classList.toggle("fa-regular");
-    icon.classList.toggle("fa-solid");
+  if (!btn) return;
+
+  e.stopPropagation();
+
+  const card = btn.closest(".product-card");
+  const id = card.dataset.id;
+  const icon = btn.querySelector("i");
+
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  if (wishlist.includes(id)) {
+    wishlist = wishlist.filter((item) => item !== id);
+    icon.classList.replace("fa-solid", "fa-regular");
+  } else {
+    wishlist.push(id);
+    icon.classList.replace("fa-regular", "fa-solid");
   }
+
+  localStorage.setItem("wishlist", JSON.stringify(wishlist));
 });
 
-
-// MOBILE NAVBAR TOGGLE
-document.getElementById("hamburger").addEventListener("click", () => {
+/* =======================
+   MOBILE NAVBAR
+======================= */
+document.getElementById("hamburger")?.addEventListener("click", () => {
   document.getElementById("nav").classList.toggle("active");
-});
-
-// Replace the card variable inside your loadProducts() function with this:
-snapshot.forEach((doc) => {
-  const p = doc.data();
-  const card = `
-    <div class="col-lg-3 col-md-4 col-6">
-      <div class="product-card border-0 bg-white h-100" data-id="${doc.id}">
-        <div class="card-img-wrapper position-relative overflow-hidden rounded-4">
-          <img src="${p.Product_Image}" class="img-fluid product-img" alt="${p.Product_Name}">
-          <div class="card-actions">
-             <button class="btn btn-white btn-icon wishlist-btn shadow-sm">
-               <i class="fa-regular fa-heart"></i>
-             </button>
-          </div>
-        </div>
-        <div class="card-body px-0 pt-3">
-          <p class="text-uppercase small fw-bold text-muted mb-1" style="letter-spacing: 1px;">${p.Category}</p>
-          <h6 class="fw-bold mb-2">${p.Product_Name}</h6>
-          <div class="d-flex justify-content-between align-items-center">
-            <span class="h5 fw-bold text-primary mb-0">₹${p.Price}</span>
-            <button class="btn btn-sm btn-outline-primary rounded-pill px-3">Add +</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-  productsContainer.insertAdjacentHTML("beforeend", card);
 });

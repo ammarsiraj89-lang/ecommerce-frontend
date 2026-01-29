@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!--css-->
-  <link rel="stylesheet" href="style/main.css">
   
   <style>
     * {
@@ -197,6 +196,78 @@ footer {
   margin-top: 40px;
 }
 
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+.navbar {
+  padding: 15px 25px;
+}
+
+nav {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: #ffffff;
+  width: 220px;
+  flex-direction: column;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  display: none;
+}
+
+nav.active {
+  display: flex;
+}
+
+nav a {
+  margin: 10px 0;
+}
+
+.btn-login {
+  width: 100%;
+}
+
+.hamburger {
+  display: block;
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* HERO */
+.hero {
+  flex-direction: column;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.hero-content {
+  width: 100%;
+}
+
+.hero-img {
+  width: 300px;
+  margin-top: 25px;
+}
+
+/* FEATURES */
+.features {
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* PRODUCTS */
+.product-grid {
+  grid-template-columns: repeat(1, 1fr);
+}
+}
+
+/* Hide hamburger on desktop */
+.hamburger {
+display: block;
+}
+
   </style>
 </head>
 
@@ -213,7 +284,11 @@ footer {
       <a href="contactus.html">Contact</a>
       <a href="dashboard.html"><button class="btn-login">Login</button></a>
     </nav>
-  </header>
+  
+    <button class="hamburger" id="hamburger">
+      <i class="fa-solid fa-bars"></i>
+  </button>  </header>
+  
 
   <!-- HERO SECTION -->
   <section class="hero">
@@ -284,14 +359,21 @@ footer {
   </footer>
 
   <script>
-    const menuBtn = document.getElementById('mobile-menu');
-    const navMenu = document.getElementById('nav-menu');
-  
-    menuBtn.addEventListener('click', () => {
-      menuBtn.classList.toggle('active');
-      navMenu.classList.toggle('active');
+    const hamburger = document.getElementById("hamburger");
+    const nav = document.getElementById("nav-menu"); // Fixed ID
+
+    hamburger.addEventListener("click", () => {
+        nav.classList.toggle("active");
     });
-  </script>
+
+    // Optional: Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+        if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+            nav.classList.remove("active");
+        }
+    });
+</script>
+  
 
 </body>
 </html>

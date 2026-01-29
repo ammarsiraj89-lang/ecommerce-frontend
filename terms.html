@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Complete UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --page-bg: #f8fafc; 
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --tldr-bg: #f1f5f9;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            margin: 0;
+            background-color: var(--page-bg);
+            scroll-behavior: smooth;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 2000;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+        }
+
+        /* Top Header Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--primary); }
+
+        .action-btns { display: flex; gap: 12px; }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            background: white;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* Main Layout */
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            padding: 0 24px;
+        }
+
+        /* Sidebar */
+        aside {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        aside h4 { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; letter-spacing: 0.05em; }
+        aside ul { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--border-color); }
+        aside li a {
+            display: block;
+            padding: 8px 20px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.935rem;
+            transition: all 0.2s;
+        }
+        aside li a:hover, aside li a.active {
+            color: var(--primary);
+            border-left: 2px solid var(--primary);
+            margin-left: -1px;
+            font-weight: 600;
+        }
+
+        /* Content Card */
+        .content-card {
+            background: var(--card-bg);
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+        }
+
+        h1 { font-size: 2.25rem; margin-top: 0; margin-bottom: 8px; color: #0f172a; }
+        .meta { color: var(--text-muted); margin-bottom: 40px; font-size: 0.9rem; }
+
+        section { margin-bottom: 48px; }
+        h2 { font-size: 1.5rem; margin-bottom: 16px; padding-top: 20px; }
+
+        .tldr {
+            background: var(--tldr-bg);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            border: 1px solid #e2e8f0;
+        }
+        .tldr b { color: var(--primary); }
+
+        /* Print styling */
+        @media print {
+            header, aside, .progress-container { display: none; }
+            .main-wrapper { display: block; }
+            .content-card { box-shadow: none; padding: 0; }
+        }
+
+        @media (max-width: 900px) {
+            .main-wrapper { grid-template-columns: 1fr; }
+            aside { display: none; }
+            .content-card { padding: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container"><div class="progress-bar" id="pBar"></div></div>
+
+    <header>
+        <a href="javascript:history.back()" class="back-link">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back
+        </a>
+        <div class="action-btns">
+            <button class="btn" onclick="window.print()">Print PDF</button>
+            <button class="btn btn-primary">Accept Terms</button>
+        </div>
+    </header>
+
+    <div class="main-wrapper">
+        <aside>
+            <h4>On this page</h4>
+            <ul>
+                <li><a href="#intro" class="nav-link">1. Introduction</a></li>
+                <li><a href="#accounts" class="nav-link">2. Accounts</a></li>
+                <li><a href="#privacy" class="nav-link">3. Privacy</a></li>
+                <li><a href="#prohibited" class="nav-link">4. Prohibited Uses</a></li>
+                <li><a href="#liability" class="nav-link">5. Liability</a></li>
+            </ul>
+        </aside>
+
+        <main class="content-card">
+            <h1>Terms and Conditions</h1>
+            <p class="meta">Last Updated: January 29, 2026 • Version 1.0.4</p>
+
+            <section id="intro">
+                <h2>1. Introduction</h2>
+                <div class="tldr"><b>Summary:</b> This is a legal contract. Using our app means you agree to these rules.</div>
+                <p>Welcome to our platform. These Terms and Conditions govern your use of our website and services. By accessing our platform, you agree to comply with and be bound by the following terms.</p>
+            </section>
+
+            <section id="accounts">
+                <h2>2. User Accounts</h2>
+                <div class="tldr"><b>Summary:</b> You're responsible for your password and account activity.</div>
+                <p>When you create an account, you must provide accurate information. Failure to do so constitutes a breach of terms. You are responsible for safeguarding your password and for any activities under your account.</p>
+            </section>
+
+            <section id="privacy">
+                <h2>3. Privacy & Data</h2>
+                <div class="tldr"><b>Summary:</b> We take your data seriously. Check our Privacy Policy for more.</div>
+                <p>Your privacy is important. Our Privacy Policy explains how we collect and use your data. By using our service, you consent to the collection and use of this information.</p>
+            </section>
+
+            <section id="prohibited">
+                <h2>4. Prohibited Uses</h2>
+                <div class="tldr"><b>Summary:</b> No hacking, no spamming, and no illegal activities.</div>
+                <p>You may not use the Service for any illegal or unauthorized purpose. You agree not to violate any laws in your jurisdiction (including but not limited to copyright laws).</p>
+            </section>
+
+            <section id="liability">
+                <h2>5. Limitation of Liability</h2>
+                <div class="tldr"><b>Summary:</b> We aren't responsible if things go wrong beyond our control.</div>
+                <p>To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, or consequential damages resulting from your use of the service.</p>
+            </section>
+
+            <footer style="margin-top: 60px; border-top: 1px solid var(--border-color); padding-top: 20px; color: var(--text-muted); font-size: 0.85rem;">
+                Questions? Contact us at support@example.com
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Progress Bar & Scroll Spy Logic
+        window.onscroll = () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("pBar").style.width = scrolled + "%";
+
+            // Highlight Active Nav
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".nav-link");
+            let current = "";
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 120) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("active");
+                }
+            });
+        };
+    </script>
+</body>
+</html>
