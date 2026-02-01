@@ -1069,3 +1069,32 @@ footer hr {
     padding: 15px;
   }
 }
+
+.hero-section {
+  position: relative;
+}
+
+.hero-img {
+  height: 90vh;
+  object-fit: cover;
+}
+
+.mobile-hero-img {
+  height: 60vh;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.hero-content {
+  position: absolute;
+  z-index: 2;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
