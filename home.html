@@ -228,11 +228,10 @@ nav a {
   width: 100%;
 }
 
-.hamburger {
-  display: block;
-  font-size: 28px;
-  cursor: pointer;
-  user-select: none;
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
 }
 
 /* HERO */
@@ -265,7 +264,11 @@ nav a {
 
 /* Hide hamburger on desktop */
 .hamburger {
-display: block;
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
 }
 
   </style>
