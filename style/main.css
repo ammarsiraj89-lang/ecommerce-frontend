@@ -349,4 +349,76 @@ body {
     display: none;
   }
 }
+/* 🔹 Base navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background: #fff;
+  position: relative;
+}
+
+/* 🔹 Hamburger */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* 🔹 Nav menu (desktop default) */
+.nav {
+  display: flex;
+  gap: 25px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  /* 🔹 Show hamburger */
+  .hamburger {
+    display: block;
+  }
+
+  /* 🔹 Hide desktop nav */
+  .nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    flex-direction: column;
+    background: #fff;
+    width: 220px;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    z-index: 999;
+  }
+
+  /* 🔹 Toggle active menu */
+  .nav.active {
+    display: flex;
+  }
+
+  /* 🔹 Logo resize */
+  .logo img {
+    width: 45px;
+  }
+
+  .logo span {
+    display: none;
+  }
+
+  /* 🔹 Search smaller */
+  .search {
+    width: 50%;
+  }
+
+  .search input {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+
 
