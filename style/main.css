@@ -327,10 +327,16 @@ body {
   }
 }
 @media (max-width: 768px) {
+  .logo{
+    width: 50px;
+  }
   .mobile-hero-img {
-    height: 20vh;
+    height: 27vh;
     object-fit: contain;
     background: #000;
+  }
+  .search{
+    width: 50%;
   }
 }
 
